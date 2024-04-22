@@ -26,6 +26,7 @@ function addSparaToPage(url) {
   sparaButton.addEventListener("click", toggleChat);
 
   const ifrm = document.createElement("iframe");
+  ifrm.src = url;
   ifrm.id = "spara-chat";
   ifrm.style.cssText = `
     width: 390px;
@@ -41,7 +42,6 @@ function addSparaToPage(url) {
 
   function toggleChat() {
     const ifrm = document.getElementById("spara-chat");
-    if (!ifrm.src) ifrm.setAttribute("src", url);
 
     if (ifrm.style.display === "block") {
       ifrm.style.display = "none";
