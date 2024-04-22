@@ -61,4 +61,4 @@ function addSparaToPage(url) {
     toggleChat();
   }
 }
-addSparaToPage("https://espn.com");
+addSparaToPage("https://spara-flask-dev-32ab36466dad.herokuapp.com/sign-in");
