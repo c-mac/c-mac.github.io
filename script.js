@@ -53,10 +53,10 @@ function addSparaToPage(url) {
       sparaButton.innerHTML = downSVG;
     }
   }
-  const chatOpen = localStorage.getItem("chatOpen");
+  const chatOpen = localStorage.getItem("sparaChatOpen");
   if (chatOpen) {
     ifrm.style.display = "block";
-    sparaButton.innerHTML = chatSVG;
+    sparaButton.innerHTML = downSVG;
   }
 }
 addSparaToPage("http://localhost:5001/demo/rho/chat");
