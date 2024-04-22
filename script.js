@@ -61,4 +61,4 @@ function addSparaToPage(url) {
     toggleChat();
   }
 }
-addSparaToPage("https://spara-flask-dev-32ab36466dad.herokuapp.com/sign-in");
+addSparaToPage("http://localhost:5001/demo/rho");
