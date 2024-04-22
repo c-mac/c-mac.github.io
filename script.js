@@ -54,7 +54,7 @@ function addSparaToPage(url) {
     }
   }
   const chatOpen = localStorage.getItem("sparaChatOpen");
-  if (chatOpen) {
+  if (chatOpen === "true") {
     ifrm.style.display = "block";
     sparaButton.innerHTML = downSVG;
   }
