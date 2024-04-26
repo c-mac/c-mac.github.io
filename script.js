@@ -23,6 +23,7 @@ function addSparaToPage(url) {
   document.body.appendChild(sparaButton);
 
   function onSparaButtonClick() {
+    loadAndShowIframe();
     toggleChat();
   }
 
@@ -39,8 +40,30 @@ function addSparaToPage(url) {
     z-index: 100000;
     background-color: white;
     display: none;
+    border-radius: 5px;
+    box-shadow: 0px 2px 15px 0px rgba(0, 0, 0, 0.15);
+    border-width: 1px;
+    border-style: solid;
+    border-color: #d2d2d2;
   `;
   document.body.appendChild(ifrm);
+
+  function loadAndShowIframe() {
+    if (!ifrm.src) {
+      ifrm.src = url;
+    }
+    ifrm.style.display = "block";
+    sparaButton.innerHTML = downSVG;
+  }
+
+  function adjustIframeDimensions() {
+    const maxHeight = window.innerHeight - 75; // 75px is the bottom margin
+    const maxWidth = window.innerWidth - 20;
+    ifrm.style.height = `${Math.min(600, maxHeight)}px`;
+    ifrm.style.width = `${Math.min(390, maxWidth)}px`;
+  }
+
+  window.addEventListener("resize", adjustIframeDimensions);
 
   function toggleChat() {
     const ifrm = document.getElementById("spara-chat");
@@ -50,9 +73,6 @@ function addSparaToPage(url) {
       sparaButton.innerHTML = chatSVG;
       localStorage.setItem("sparaChatOpen", "false");
     } else {
-      if (!ifrm.src) {
-        ifrm.src = url;
-      }
       ifrm.style.display = "block";
       sparaButton.innerHTML = downSVG;
       localStorage.setItem("sparaChatOpen", "true");
@@ -60,7 +80,7 @@ function addSparaToPage(url) {
   }
   const chatOpen = localStorage.getItem("sparaChatOpen");
   if (chatOpen === "true") {
-    toggleChat();
+    loadAndShowIframe();
   }
 }
 
